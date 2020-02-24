@@ -4,6 +4,7 @@
 
 #include <cqcppsdk/cqcppsdk.h>
 
+
 using namespace cq;
 using namespace std;
 using Message = cq::message::Message;

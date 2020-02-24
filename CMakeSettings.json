@@ -2,13 +2,13 @@
   "configurations": [
     {
       "name": "x64-Debug",
-      "generator": "Ninja",
+      "generator": "Visual Studio 16 2019 Win64",
       "configurationType": "Debug",
       "inheritEnvironments": [ "msvc_x64_x64" ],
       "buildRoot": "${projectDir}\\out\\build\\${name}",
       "installRoot": "${projectDir}\\out\\install\\${name}",
-      "cmakeCommandArgs": "",
-      "buildCommandArgs": "-v",
+      "cmakeCommandArgs": "-T v142 -DCMAKE_BUILD_TYPE=${name}",
+      "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "variables": [
         {
@@ -25,12 +25,12 @@
     },
     {
       "name": "x86-Debug",
-      "generator": "Ninja",
+      "generator": "Visual Studio 16 2019",
       "configurationType": "Debug",
       "buildRoot": "${projectDir}\\out\\build\\${name}",
       "installRoot": "${projectDir}\\out\\install\\${name}",
-      "cmakeCommandArgs": "",
-      "buildCommandArgs": "-v",
+      "cmakeCommandArgs": "-T v142 -DCMAKE_BUILD_TYPE=${name}",
+      "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [ "msvc_x86" ],
       "variables": [
@@ -48,12 +48,12 @@
     },
     {
       "name": "x86-Release",
-      "generator": "Ninja",
+      "generator": "Visual Studio 16 2019",
       "configurationType": "RelWithDebInfo",
       "buildRoot": "${projectDir}\\out\\build\\${name}",
       "installRoot": "${projectDir}\\out\\install\\${name}",
-      "cmakeCommandArgs": "",
-      "buildCommandArgs": "-v",
+      "cmakeCommandArgs": "-T v142 -DCMAKE_BUILD_TYPE=${name}",
+      "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "inheritEnvironments": [ "msvc_x86" ],
       "variables": [
@@ -72,8 +72,8 @@
   ],
   "environments": [
     {
-      "VCPKG_ROOT": "D:\\Program Files\\vcpkg",
-      "VCPKG_CMAKE": "D:\\Program Files\\vcpkg\\scripts\\buildsystems\\vcpkg.cmake",
+      "VCPKG_ROOT": "H:\\vcpkg",
+      "VCPKG_CMAKE": "H:\\vcpkg\\scripts\\buildsystems\\vcpkg.cmake",
       "VCPKG_TRIPLET": "x86-windows-static-custom"
     }
   ]
