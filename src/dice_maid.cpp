@@ -3,7 +3,7 @@
 #include <sstream>
 
 #include <cqcppsdk/cqcppsdk.h>
-
+#include <dice_maid/maid.h>
 
 using namespace cq;
 using namespace std;
