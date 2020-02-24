@@ -10,7 +10,18 @@
       "cmakeCommandArgs": "",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": "",
-      "variables": []
+      "variables": [
+        {
+          "name": "CMAKE_TOOLCHAIN_FILE",
+          "value": "${env.VCPKG_CMAKE}",
+          "type": "STRING"
+        },
+        {
+          "name": "VCPKG_TARGET_TRIPLET",
+          "value": "${env.VCPKG_TRIPLET}",
+          "type": "STRING"
+        }
+      ]
     },
     {
       "name": "x86-Debug",
@@ -22,7 +33,18 @@
       "buildCommandArgs": "-v",
       "ctestCommandArgs": "",
       "inheritEnvironments": [ "msvc_x86" ],
-      "variables": []
+      "variables": [
+        {
+          "name": "CMAKE_TOOLCHAIN_FILE",
+          "value": "${env.VCPKG_CMAKE}",
+          "type": "STRING"
+        },
+        {
+          "name": "VCPKG_TARGET_TRIPLET",
+          "value": "${env.VCPKG_TRIPLET}",
+          "type": "STRING"
+        }
+      ]
     },
     {
       "name": "x86-Release",
@@ -34,7 +56,25 @@
       "buildCommandArgs": "-v",
       "ctestCommandArgs": "",
       "inheritEnvironments": [ "msvc_x86" ],
-      "variables": []
+      "variables": [
+        {
+          "name": "CMAKE_TOOLCHAIN_FILE",
+          "value": "${env.VCPKG_CMAKE}",
+          "type": "STRING"
+        },
+        {
+          "name": "VCPKG_TARGET_TRIPLET",
+          "value": "${env.VCPKG_TRIPLET}",
+          "type": "STRING"
+        }
+      ]
+    }
+  ],
+  "environments": [
+    {
+      "VCPKG_ROOT": "D:\\Program Files\\vcpkg",
+      "VCPKG_CMAKE": "D:\\Program Files\\vcpkg\\scripts\\buildsystems\\vcpkg.cmake",
+      "VCPKG_TRIPLET": "x86-windows-static-custom"
     }
   ]
 }

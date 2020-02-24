@@ -1,7 +1,6 @@
 .idea
 .vs
-.vscode/settings.json
-.vscode/c_cpp_properties.json
+.vscode
 build
 out
 cmake-build-*

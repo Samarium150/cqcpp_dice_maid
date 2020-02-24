@@ -1,1 +1,1 @@
-com.example.demo
+me.cpq.samarium.dice_maid
