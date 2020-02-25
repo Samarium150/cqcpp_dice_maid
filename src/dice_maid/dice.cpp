@@ -18,7 +18,7 @@ void Dice::init() {
 int Dice::roll(int times, int sides, int div = 1) {
 	int result = 0;
 	for (int i = 1; i <= times; i++) result += common::random(sides);
-	return ( int )floor(result / div);
+	return (int)floor(result / div);
 }
 
 string Dice::roll(int times, int sides, int div, bool output, int& s) {
@@ -309,16 +309,16 @@ string Dice::san_check(string msg, int rate) {
 	smatch m_dc, m_san;
 	vector<string> dices;
 	if (regex_search(msg, m_dc, dc)) {
-		auto   x	= m_dc.begin();
+		auto x = m_dc.begin();
 		string temp = x->str();
-		dices		= split(strip(temp), '/');
+		dices = split(strip(temp), '/');
 	} else
 		return "";
 	int sanity = 0;
 	if (regex_search(msg, m_san, san)) {
-		auto   y  = m_san.begin();
+		auto y = m_san.begin();
 		string tp = y->str();
-		sanity	= stoi(strip(tp));
+		sanity = stoi(strip(tp));
 	} else
 		return "";
 	if (dices.size() != 2)

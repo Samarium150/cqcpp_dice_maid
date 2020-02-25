@@ -6,7 +6,7 @@ AccessModifierOffset: -4
 NamespaceIndentation: All
 IndentCaseLabels: false
 BinPackArguments: false
-SortUsingDeclarations: false
+SortUsingDeclarations: true
 BreakBeforeBinaryOperators: NonAssignment
 SpacesBeforeTrailingComments: 1
 DerivePointerAlignment: true

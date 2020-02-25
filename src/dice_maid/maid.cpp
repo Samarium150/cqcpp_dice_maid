@@ -2,10 +2,9 @@
 
 using namespace std;
 
-string Maid::banned = "";
-string Maid::cursed = "";
+
 string Maid::setting = "";
-int64_t Maid::master = 941295333L;
+
 
 void Maid::init() {
 	string data = get_data_path();
@@ -15,11 +14,9 @@ void Maid::init() {
 		b << data << "\\banned";
 		c << data << "\\cursed";
 		s << data << "\\setting";
-		Maid::banned = b.str();
-		Maid::cursed = c.str();
+
 		Maid::setting = s.str();
-		if (_access(Maid::banned.c_str(), 0) == -1) CreateDirectory(Maid::banned.c_str(), NULL);
-		if (_access(Maid::cursed.c_str(), 0) == -1) CreateDirectory(Maid::cursed.c_str(), NULL);
+
 		if (_access(Maid::setting.c_str(), 0) == -1) CreateDirectory(Maid::setting.c_str(), NULL);
 	}
 	Dice::init();
@@ -85,7 +82,7 @@ string Maid::command(int64_t id, string msg) {
 
 	regex tr("^#tarot.*"), rs("\\s.*");
 	smatch m_tr, m_rs;
-	if (regex_match(msg, m_tr, tr) && !check_cursed(id)) {
+	if (regex_match(msg, m_tr, tr)) {
 		if (regex_search(msg, m_rs, rs)) {
 			auto x = m_rs.begin();
 			string str = x->str();
@@ -173,55 +170,6 @@ string Maid::command(int64_t id, string name, string msg) {
 	else
 		pre.str("");
 	return pre.str();
-}
-
-string Maid::ban(int64_t id) {
-	stringstream ss, response;
-	ss << Maid::banned << "\\" << id << ".txt";
-	const char* path = ss.str().c_str();
-	if (check_banned(id)) {
-		HANDLE file = CreateFile(
-			path,
-			GENERIC_READ,
-			0,
-			NULL,
-			CREATE_ALWAYS,
-			FILE_ATTRIBUTE_NORMAL,
-			NULL
-		);
-		(file == INVALID_HANDLE_VALUE) ? response << "生成文件失败, " << GetLastError() << ", " << ss.str() 
-			: response << "banned " << id;
-		CloseHandle(file);
-	} else {
-		response << "already banned " << id << ", " << ss.str();
-	}
-	return response.str();
-}
-
-string Maid::unban(int64_t id) {
-	stringstream ss, response;
-	ss << Maid::banned << "\\" << id << ".txt";
-	if (check_banned(id)) {
-		if (remove(ss.str().c_str()) == 0)
-			response << "unbanned " << id;
-		else
-			response << "移除文件失败";
-	} else {
-		response << id << " is not banned";
-	}
-	return response.str();
-}
-
-bool Maid::check_banned(const int64_t id) {
-	stringstream ss;
-	ss << Maid::banned << "\\" << id << ".txt";
-	return _access(ss.str().c_str(), 0) == 0;
-}
-
-bool Maid::check_cursed(const int64_t id) {
-	stringstream ss;
-	ss << Maid::cursed << "\\" << id << ".txt";
-	return _access(ss.str().c_str(), 0) == 0;
 }
 
 int Maid::get_rate(int64_t id) {

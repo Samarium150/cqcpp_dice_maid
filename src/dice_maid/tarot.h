@@ -10,5 +10,4 @@ namespace Tarot {
     void init();
 	string get_card();
 	string get_card(string msg);
-
 }  // namespace Tarot
