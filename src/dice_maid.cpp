@@ -1,9 +1,11 @@
 #include <iostream>
 #include <set>
 #include <sstream>
-
+#include <cmrc/cmrc.hpp>
 #include <cqcppsdk/cqcppsdk.h>
 #include <dice_maid/maid.h>
+
+CMRC_DECLARE(app);
 
 using namespace cq;
 using namespace std;
