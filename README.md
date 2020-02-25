@@ -1,5 +1,15 @@
-# CoolQ C++ SDK 项目模板
+# CoolQ C++ 骰娘
 
-[![Build Status](https://img.shields.io/appveyor/ci/richardchien/cqcppsdk-template.svg)](https://ci.appveyor.com/project/richardchien/cqcppsdk-template)
+本仓库由 [CoolQ C++ SDK模板](https://github.com/cqmoe/cqcppsdk-template) 生成。
 
-本仓库是 [CoolQ C++ SDK](https://github.com/cqmoe/cqcppsdk) 的项目模板，提供了基本的目录结构、CMake 配置、持续集成配置、安装脚本等，使用方法请参考 [CoolQ C++ SDK 文档](https://cqcppsdk.cqp.moe/)。
+手动编译使用方法请参考 [CoolQ C++ SDK文档](https://cqcppsdk.cqp.moe/)。
+
+编译前置要求：
+
+· [Visual Studio 2019 / Visual Studio Code](https://visualstudio.microsoft.com/zh-hans/)
+	
+· [Vcpkg](https://github.com/Microsoft/vcpkg)
+	
+· [Boost](https://www.boost.org)
+
+使用Vcpkg安装Boost库的方法参见["使用第三方库"](https://cqcppsdk.cqp.moe/guide/third-party-libs.html#vcpkg)和[帮助文档](https://docs.microsoft.com/en-us/cpp/build/vcpkg?view=vs-2019), 安装完成后修改[CMakeLists.txt](https://github.com/Samarium150/cqcpp_dice_maid/blob/master/CMakeSettings.json#L73)中"environments"配置。
