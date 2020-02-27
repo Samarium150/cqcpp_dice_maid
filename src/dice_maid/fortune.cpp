@@ -53,6 +53,6 @@ string Fortune::get_luck(const int64_t qq) {
 		}
 		luck = atoi(buffer);
 	}
-	response << "今日人品: " << luck;
+	response << "Today's fortune: " << luck;
 	return response.str();
 }

@@ -10,9 +10,7 @@ void Maid::init() {
 	string data = get_data_path();
 
 	if (data != "") {
-		stringstream b, c, s;
-		b << data << "\\banned";
-		c << data << "\\cursed";
+		stringstream s;
 		s << data << "\\setting";
 
 		Maid::setting = s.str();
@@ -28,30 +26,30 @@ string Maid::get_info() {
 	stringstream info;
 	info << "Dice Maid by Samarium/941295333" << endl;
 	info << "Version: v1.2.7" << endl;
-	info << "更新日志: " << endl;
-	info << "1. 因为文件储存的原因暂时取消了jrrp功能;" << endl;
-	info << "使用#help查看帮助文档";
+	info << "Change Log: " << endl;
+	info << "1. deprecatre jrrp function;" << endl;
+	info << "use #help for manual page";
 	return info.str();
 }
 
 string Maid::get_help() {
 	stringstream help;
-	help << "帮助文档: " << endl;
-	help << "1. #maid: 查看更新信息;" << endl;
-	help << "2. #help: 查看帮助文档;" << endl;
-	help << "3. #jrrp: 查看今日人品; *temporarily deprecated" << endl;
-	help << "4. #r骰子表达式: 投一个指定的骰子, 不写骰子个数则默认为1;默认#rd=r1d100;" << endl;
-	help << "5. #ra [检定项目] [数值]: 进行一次指定技能的检定, 命令、项目和技能数值之间必须要用空格隔开, 示例: #ra 侦察 50;" << endl;
-	help << "6. #sc [San值表达式] [当前San值]: 快捷San check, 示例: #sc 1d10/1d100 80;" << endl;
-	help << "7. #h骰子表达式: 进行一次暗骰, 默认为1d100;" << endl;
-	help << "8. #tarot [理由]: 抽一张塔罗牌;" << endl;
-	help << "9. #ti/li: 决定疯狂症状;" << endl;
-	help << "10. #coc7 [正整数n]：生成n组7版人物数据，最多10组;" << endl;
-	help << "11. #en [检定项目] [数值]: 进行一次指定技能的成长检定, 命令、项目和技能数值之间必须要用空格隔开, 示例: #en 侦察 50;" << endl;
-	help << "12. #rb[正整数n] [检定项目] [数值]: 进行一次附加一个/n个奖励骰的指定技能的检定;" << endl;
-	help << "13. #rp[正整数n] [检定项目] [数值]: 进行一次附加一个/n个惩罚骰的指定技能的检定;" << endl;
-	help << "14. #set rate 0/1: 设置技能检定倍率（有无倍增），默认为规则书标准倍率" << endl;
-	help << "15. #!dissmiss 骰娘QQ号: 让骰娘退群";
+	help << "Manual Page: " << endl;
+	help << "1. #maid: What's new;" << endl;
+	help << "2. #help: Manual Page;" << endl;
+	help << "3. #jrrp: Today's fortune; *temporarily deprecated" << endl;
+	help << "4. #r dice_expression: Roll a given dice, default number is 1; default roll#rd=r1d100;" << endl;
+	help << "5. #ra [skill] skill_point: check a given skill, example: #ra dodge 50;" << endl;
+	help << "6. #sc San_expression Sanity: quick San check, example: #sc 1d10/1d100 80;" << endl;
+	help << "7. #h dice_expression: roll a hidden dice, default is 1d100;" << endl;
+	help << "8. #tarot [reason]: get a tarot card;" << endl;
+	help << "9. #ti/li: decide madness;" << endl;
+	help << "10. #coc7 [integer n]：generate n groups of ;" << endl;
+	help << "11. #en [skill] skill_point: enforce a skill: #en persuade 50;" << endl;
+	help << "12. #rb[integer n] [skill] skill_point: skill checking with bonus n dice;" << endl;
+	help << "13. #rp[integer n] [skill] skill_point: skill checking with punishment n dice;" << endl;
+	help << "14. #set rate 0/1: set checking rate" << endl;
+	help << "15. #!dissmiss QQ: leave the group";
 	return help.str();
 }
 
@@ -116,7 +114,7 @@ string Maid::command(int64_t id, string msg) {
 		if (s.size() == 2) {
 			try {
 				num = (int)floor(stoi(s[0]) / stoi(s[1]));
-			} catch (const invalid_argument& ia) { return "表达式错误"; }
+			} catch (const invalid_argument& ia) { return "invalid expression"; }
 		} else
 			num = stoi(s[0]);
 	} else
@@ -152,7 +150,7 @@ string Maid::command(int64_t id, string msg) {
 	if (regex_match(msg, m_set, set)) {
 		int set = stoi(extract(msg, 2, ' '));
 		set_rate(id, set);
-		string response = (set == 0) ? string("将倍率设置为标准倍率") : string("将倍率设置为翻倍倍率");
+		string response = (set == 0) ? string("set rate as standard") : string("set rate as double");
 		return response;
 	}
 
