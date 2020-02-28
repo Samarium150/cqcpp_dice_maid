@@ -1,17 +1,11 @@
-#include <iostream>
-#include <set>
-#include <sstream>
-#include <cmrc/cmrc.hpp>
 #include <cqcppsdk/cqcppsdk.h>
 #include <dice_maid/maid.h>
-
-CMRC_DECLARE(app);
+#include <sstream>
 
 using namespace cq;
 using namespace std;
 using Message = cq::message::Message;
 using MessageSegment = cq::message::MessageSegment;
-
 
 string get_member_name(const int64_t group_id, const int64_t user_id) {
     GroupMember member = get_group_member_info(group_id, user_id);
@@ -25,9 +19,14 @@ GroupRole get_member_role(const int64_t group_id, const int64_t user_id) {
 }
 
 CQ_INIT {
-    on_enable([] { 
+
+    on_enable([] {
         string path = get_data_path();
-        if (path != "" && _access(path.c_str(), 0) == -1) CreateDirectory(path.c_str(), NULL);
+        if (path != "" && _access(path.c_str(), 0) == -1) {
+            if (! CreateDirectory(path.c_str(), NULL))
+                throw - 1;
+        } else if (path == "")
+            throw - 1;
         Maid::init();
         logging::info("启用", "插件已启用");
     });
@@ -44,7 +43,7 @@ CQ_INIT {
             stringstream response;
             try {
                 response << Maid::command(e.user_id, msg);
-            } catch (const exception& exc) {
+            } catch (const exception &exc) {
                 stringstream result;
                 result << "内部错误: " << exc.what() << "\n原消息： " << msg;
                 logging::error("私聊", result.str());
@@ -101,8 +100,7 @@ CQ_INIT {
                 string response;
                 string name = get_member_name(e.group_id, e.user_id);
                 int64_t id = (regex_match(msg, m_jrrp, jrrp)) ? e.user_id : e.group_id;
-                if (regex_match(msg, m_set, set)
-                && get_member_role(e.group_id, e.user_id) == GroupRole::MEMBER) {
+                if (regex_match(msg, m_set, set) && get_member_role(e.group_id, e.user_id) == GroupRole::MEMBER) {
                     Message message("权限不足, 请让群主或管理员操作");
                     send_group_message(e.group_id, message);
                 } else {
@@ -118,7 +116,7 @@ CQ_INIT {
                     }
                 }
             }
-        } catch (const logic_error& exc) {
+        } catch (const logic_error &exc) {
             stringstream result;
             result << "内部逻辑错误: " << exc.what() << "\n原消息： " << msg;
             logging::error("群聊", result.str());

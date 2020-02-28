@@ -24,13 +24,17 @@ cmrc_add_resource_library(
     app-resources 
     ALIAS app::rc
     NAMESPACE app
+    resources/maid.txt
+    resources/manual.txt
+    resources/madness.txt
+    resources/tarot.txt
 )
 
 if (CQ_CAN_BUILD_STD_MODE)
     cq_add_std_app(${SOURCE_FILES}) # 添加 std 模式的动态链接库构建目标
     target_link_libraries(app ${Boost_LIBRARIES})
     target_link_libraries(app PRIVATE app::rc)
-    cq_install_std_app()
+    cq_install_std_app("D:/Program Files/CQA")
 endif ()
 
 # 添加 dev 模式的可执行文件构建目标
@@ -39,5 +43,5 @@ target_link_libraries(app_dev ${Boost_LIBRARIES})
 target_link_libraries(app_dev PRIVATE app::rc)
 
 # 添加单元测试，如果无需测试，可删除
-enable_testing()
-add_subdirectory(extern/cqcppsdk/tests)
+# enable_testing()
+# add_subdirectory(extern/cqcppsdk/tests)

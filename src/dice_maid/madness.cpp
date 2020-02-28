@@ -233,6 +233,10 @@ string Madness::mania[100] = {
 	"喜兽癖：对待动物的态度近乎疯狂地友好。"
 };
 
+void Madness::init() {
+    
+}
+
 string Madness::get_symptom(int type) {
 	stringstream result;
 	result << "疯狂发作-";

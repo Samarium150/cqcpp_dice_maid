@@ -1,0 +1,5 @@
+Dice Maid by Samarium/941295333
+Version: v1.2.7
+更新日志: 
+1. 因为文件储存的原因暂时取消了jrrp功能;
+使用#help查看帮助文档

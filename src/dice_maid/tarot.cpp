@@ -74,13 +74,7 @@ string Tarot::major_meaning_b[22] = { "重视梦想, 心情空虚, 行事缺乏�
 	                                  "未完成, 失败, 准备不足, 盲目接受, 一时不顺利, 半途而废, 精神颓废, 饱和状态, 合谋, 态度不够融洽, 感情受挫" };
 
 void Tarot::init() {
-	string data = get_data_path();
-	if (data != "") {
-		stringstream ss;
-		ss << data << "\\tarot_data";
-		Tarot::path = ss.str();
-		if (_access(Tarot::path.c_str(), 0) == -1) CreateDirectory(Tarot::path.c_str(), NULL);
-	}
+	
 }
 
 string Tarot::get_card() {

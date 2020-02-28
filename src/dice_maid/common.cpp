@@ -39,12 +39,12 @@ string extract(string& values, int index, char delim = ' ') {
 	vector<string> x = split(values, delim);
 	try {
 		return x.at(index);
-	} catch (const out_of_range& oor) { return string(""); }
+	} catch (const out_of_range&) { return string(""); }
 }
 
 bool start_with(const string& str, const string& head) {
-	int srclen = str.size();
-	int startlen = head.size();
+	int srclen = (int) str.size();
+	int startlen = (int) head.size();
 	if (srclen >= startlen) {
 		string temp = str.substr(0, startlen);
 		return temp == head;
@@ -65,4 +65,8 @@ string get_data_path() {
 		return path.str();
 	} else
 		return "";
+}
+
+cmrc::file get_file(const string& name) {
+    return cmrc::app::get_filesystem().open(name);
 }
