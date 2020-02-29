@@ -11,7 +11,7 @@ void Dice::init() {
 	int skipper = (int)(temp.tm_min * (temp.tm_mon + 1)
 		% ((temp.tm_hour + 1) * (temp.tm_year + 1900)) 
 		* (temp.tm_sec - temp.tm_mday));
-	    
+		
 	for (int i = 0; i < skipper; i++) common::random(100);
 }
 
@@ -228,7 +228,7 @@ string Dice::toss(string msg) {
 			result.str("");
 			result << "不要扔这么多骰子!";
 			return result.str();
-		} catch (const logic_error& le) {
+		} catch (const logic_error&) {
 			result.str("");
 			result << "表达式错误";
 			return result.str();
@@ -269,7 +269,7 @@ string Dice::check(string msg, int num, int rate, int type) {
 		result << "成长检定: 1d100=" << d << "|" << num << ", " << temp;
 		if (temp == "成功") {
 			int dx = Dice::roll(1, 10);
-			result << endl << "增长: 1d10=" << dx;
+			result << endl << "增长: 1d10=" << dx << ", " << endl << "最终为: " << num + dx;
 		}
 	}
 	return result.str();
