@@ -10,7 +10,9 @@ void Fortune::init() {
 		stringstream ss;
 		ss << data << "\\fortune_data";
 		Fortune::path = ss.str();
+#ifdef STD
 		if (_access(Fortune::path.c_str(), 0) == -1 && (! CreateDirectory(Fortune::path.c_str(), NULL))) throw -1;
+#endif
 	} else throw -1;
 }
 

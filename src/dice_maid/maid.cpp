@@ -11,9 +11,9 @@ void Maid::init() {
 		stringstream s;
 		s << data << "\\setting";
 		Maid::setting = s.str();
-
+#ifdef STD
 		if (_access(Maid::setting.c_str(), 0) == -1 && (!CreateDirectory(Maid::setting.c_str(), NULL))) throw - 1;
-
+#endif
 		Dice::init();
 		Fortune::init();
 		Madness::init();
@@ -23,13 +23,13 @@ void Maid::init() {
 
 string Maid::get_info() {
 	stringstream info;
-    info << get_file("resources/maid.txt").begin();
+	info << get_file("resources/maid.txt").begin();
 	return info.str();
 }
 
 string Maid::get_help() {
 	stringstream help;
-    help << get_file("resources/manual.txt").begin();
+	help << get_file("resources/manual.txt").begin();
 	return help.str();
 }
 
@@ -69,7 +69,7 @@ string Maid::command(int64_t id, string msg) {
 			return Tarot::get_card();
 	}
 
-	regex ma("^#li$"), mb("^#ti$");
+	regex ma("^#ti$"), mb("^#li$");
 	smatch m_ma, m_mb;
 	if (regex_match(msg, m_ma, ma))
 		return Madness::get_symptom(0);

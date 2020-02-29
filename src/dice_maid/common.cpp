@@ -68,5 +68,5 @@ string get_data_path() {
 }
 
 cmrc::file get_file(const string& name) {
-    return cmrc::app::get_filesystem().open(name);
+	return cmrc::app::get_filesystem().open(name);
 }
