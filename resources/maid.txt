@@ -1,6 +1,5 @@
 Dice Maid by Samarium/941295333
-Version: v1.3.0
+Version: v1.3.2
 更新日志: 
-1. 恢复了jrrp功能;
-2. 修复了倍率设置;
+1. 重新添加了自动接受好友/加群请求的功能;
 使用#help查看帮助文档

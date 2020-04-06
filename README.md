@@ -12,4 +12,4 @@
 	
 · [Boost](https://www.boost.org)
 
-使用Vcpkg安装Boost库的方法参见["使用第三方库"](https://cqcppsdk.cqp.moe/guide/third-party-libs.html#vcpkg)和[帮助文档](https://docs.microsoft.com/en-us/cpp/build/vcpkg?view=vs-2019), 安装完成后修改[CMakeLists.txt](https://github.com/Samarium150/cqcpp_dice_maid/blob/master/CMakeSettings.json#L73)中"environments"配置。
+使用Vcpkg安装Boost库的方法参见["使用第三方库"](https://cqcppsdk.cqp.moe/guide/third-party-libs.html#vcpkg)和[帮助文档](https://docs.microsoft.com/en-us/cpp/build/vcpkg?view=vs-2019), 安装完成后修改[CMakeSettings.json](https://github.com/Samarium150/cqcpp_dice_maid/blob/master/CMakeSettings.json#L73)中"environments"配置。

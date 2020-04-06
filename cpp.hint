@@ -1,3 +1,15 @@
+#define dolores_on_message
+#define dolores_on_notice
+#define dolores_on_request
+
+#define DEF_EVENT
+
+#define TEST_CASE
+#define REQUIRE
+#define REQUIRE_FALSE
+#define REQUIRE_NOTHROW
+#define REQUIRE_THROWS_AS
+
 #define STD
 #define CQ_INIT
 #define CQ_MENU
