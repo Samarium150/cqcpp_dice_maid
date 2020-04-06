@@ -1,8 +1,8 @@
-O The Fool 愚者|
-I The Magician 魔术师|
-II The High Priestess 女祭司|
-III The Empress 皇后|
-IV The Emperor 皇帝|
+O The Fool 愚者
+I The Magician 魔术师
+II The High Priestess 女祭司
+III The Empress 皇后
+IV The Emperor 皇帝
 V The Hierophant 教皇
 VI The Lovers 恋人
 VII The Chariot 战车
@@ -65,4 +65,4 @@ XXI The World 世界
 逃脱骗局, 解除误会, 状况好转, 预知危险, 等待, 正视爱情的裂缝
 消沉, 体力不佳, 缺乏连续性, 意气消沉, 生活不安, 人际关系不好, 感情波动
 一蹶不振, 幻灭, 隐瞒, 坏消息, 无法决定, 缺少目标, 没有进展, 消除, 恋恋不舍
-未完成, 失败, 准备不足, 盲目接受, 一时不顺利, 半途而废, 精神颓废, 饱和状态, 合谋, 态度不够融洽, 感情受挫 
+未完成, 失败, 准备不足, 盲目接受, 一时不顺利, 半途而废, 精神颓废, 饱和状态, 合谋, 态度不够融洽, 感情受挫
