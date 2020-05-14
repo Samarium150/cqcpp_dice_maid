@@ -53,6 +53,11 @@ string Maid::get_help() {
 	return help.str();
 }
 
+string Maid::get_zbzm(const int64_t id){
+	stringsteam zbzm;
+	zbzm << "揍爆了字母，希望ta升高的血压能因此降低一些呢"<<endl;
+}
+
 string Maid::command(int64_t id, string msg) {
 	regex info("^(#|>|~|.|-)maid$");
 	smatch m_info;
@@ -153,6 +158,10 @@ string Maid::command(int64_t id, string msg) {
 		string response = (set == 0) ? string("set rate as standard") : string("set rate as double");
 		return response;
 	}
+//zbzm
+	regex zbzm("^zbzm")
+	smatch m_zbzm;
+	if(regex_match(msg, m_zbzm,zbzm)) return Maid::get_zbzm(id);
 
 	return string("");
 }
