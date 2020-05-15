@@ -10,6 +10,7 @@ namespace Maid {
     void init();
 	string get_help();
 	string get_info();
+    string get_zbzm();
 	string command(int64_t id, string msg);
 	string command(int64_t id, string name, string msg);
     int get_rate(int64_t id);

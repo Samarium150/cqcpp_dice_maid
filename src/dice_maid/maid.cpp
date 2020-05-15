@@ -55,7 +55,7 @@ string Maid::get_help() {
 
 string Maid::get_zbzm(const int64_t id){
 	stringsteam zbzm;
-	zbzm << "揍爆了字母，希望ta升高的血压能因此降低一些呢"<<endl;
+	zbzm << "揍爆了字母，希望ta升高的血压能因此降低一些呢" << endl;
 }
 
 string Maid::command(int64_t id, string msg) {
@@ -156,6 +156,14 @@ string Maid::command(int64_t id, string msg) {
 		int set = stoi(extract(msg, 2, ' '));
 		set_rate(id, set);
 		string response = (set == 0) ? string("set rate as standard") : string("set rate as double");
+		return response;
+	}
+
+	regex repeat("^#fd\\s(0|1)$");
+	smatch m_rep;
+	if (regex_match(msg, m_rep, repeat)) {
+		int repeat = stoi(extract(msg, 1, ' '));
+		string response = (repeat == 0) ? string("repeat off") : string("repeat on");
 		return response;
 	}
 //zbzm

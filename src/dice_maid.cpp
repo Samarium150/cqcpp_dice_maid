@@ -4,6 +4,7 @@
 #include <cmrc/cmrc.hpp>
 #include <cqcppsdk/cqcppsdk.h>
 #include <dice_maid/maid.h>
+#include <math.h>
 
 CMRC_DECLARE(app);
 
@@ -84,6 +85,11 @@ CQ_INIT {
         e.block(); // block the message to next plugin
         */
         string msg = string(e.message);
+        string last_msg = "";
+        int count = 0;
+        int multiples = 1000;
+        bool repeat = false;
+        bool repeat_switch = false;
         regex hidden("^#h"), dissmiss("^#!dissmiss\\s\\d+$"), jrrp("^#jrrp$"), set("^#set.*");
         smatch m_h, m_diss, m_jrrp, m_set;
         try {
@@ -101,6 +107,12 @@ CQ_INIT {
                 string response;
                 string name = get_member_name(e.group_id, e.user_id);
                 int64_t id = (regex_match(msg, m_jrrp, jrrp)) ? e.user_id : e.group_id;
+                //复读次数
+                if (msg.compare(last_msg)) {
+                    count = 0;
+                    repeat = false;
+                }
+                else count++;
                 if (regex_match(msg, m_set, set)
                 && get_member_role(e.group_id, e.user_id) == GroupRole::MEMBER) {
                     Message message("premission denied");
@@ -115,8 +127,17 @@ CQ_INIT {
                     } else if (response != "") {
                         Message message(response);
                         send_group_message(e.group_id, message);
+                    } else if(repeat_switch) {
+                        if (common::random(multiples) - multiples * tanh(0.2*count) < 0 && !repeat){
+                            send_group_message(e.group_id, msg);
+                            repeat = true;
+                        }
+                    }
+                    if(response.find("repeat") != string::npos) {
+                        repeat_switch = (response.find("on") == string::npos)? true : false;
                     }
                 }
+                last_msg = msg;
             }
         } catch (const logic_error& exc) {
             stringstream result;
